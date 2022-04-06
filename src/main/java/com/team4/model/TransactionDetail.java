@@ -1,11 +1,11 @@
 package com.team4.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class TransactionDetail {
     private int id;
     private double amount;
-    private LocalDate date;
+    private Date date;
     private Transaction transaction;
     private Category category;
     private Wallet wallet;
@@ -14,7 +14,7 @@ public class TransactionDetail {
     public TransactionDetail() {
     }
 
-    public TransactionDetail(double amount, LocalDate date, Transaction transaction, Category category, Wallet wallet, String notes) {
+    public TransactionDetail(double amount, Date date, Transaction transaction, Category category, Wallet wallet, String notes) {
         this.amount = amount;
         this.date = date;
         this.transaction = transaction;
@@ -23,7 +23,7 @@ public class TransactionDetail {
         this.notes = notes;
     }
 
-    public TransactionDetail(int id, double amount, LocalDate date, Transaction transaction, Category category, Wallet wallet, String notes) {
+    public TransactionDetail(int id, double amount, Date date, Transaction transaction, Category category, Wallet wallet, String notes) {
         this.id = id;
         this.amount = amount;
         this.date = date;
@@ -49,11 +49,11 @@ public class TransactionDetail {
         this.amount = amount;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
