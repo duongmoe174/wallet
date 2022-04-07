@@ -21,7 +21,9 @@
 </center>
 <div align="center">
     <form method="post">
-        <table border="1" cellpadding="5">
+        <fieldset style="font-weight: bolder">
+            <legend style="font-weight: bold" >Form add Category</legend>
+        <table border="1" cellpadding="8">
             <caption>
                 <h2>Add New Catalog</h2>
             </caption>
@@ -41,8 +43,11 @@
                 <td colspan="2" align="center">
                     <input type="submit" value="Save"/>
                 </td>
+
             </tr>
+
         </table>
+        </fieldset>
     </form>
 </div>
 </body>

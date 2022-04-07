@@ -17,7 +17,7 @@
 <center>
     <h1>Catalog Management</h1>
     <h2>
-        <a href="/Catalog?action=create">Add New User</a>
+        <a href="/Catalog?action=create">Add New At Catalog</a>
     </h2>
     <%--    <h2>--%>
     <%--        <a href="/Catalog?action=search">Search</a>--%>
@@ -27,7 +27,10 @@
     <%--    </h2>--%>
 </center>
 <div align="center">
-    <table border="1" cellpadding="5">
+    <form >
+        <fieldset style="font-weight: bolder">
+            <legend style="font-weight: bold" >Category</legend>
+    <table border="1" cellpadding="8">
         <caption>
             <h2>List of Catalog</h2>
         </caption>
@@ -52,6 +55,8 @@
             </tr>
         </c:forEach>
     </table>
+        </fieldset>
+    </form>
 </div>
 
 </body>
