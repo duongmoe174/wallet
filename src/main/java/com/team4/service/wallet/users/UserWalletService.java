@@ -38,7 +38,22 @@ public class UserWalletService implements IUserWalletService {
 
     @Override
     public UserWallet getById(int id) {
-        return null;
+        UserWallet userWallet = null;
+        try (
+                Connection c = SingletonConnection.getConnect();
+                PreparedStatement preparedStatement = c.prepareStatement("SELECT  * FROM  user where  id_user=?")
+        ) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String name = resultSet.getString("name_user");
+                userWallet = new UserWallet(id, name);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userWallet;
     }
 
     @Override

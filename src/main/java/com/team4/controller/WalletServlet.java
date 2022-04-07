@@ -1,5 +1,7 @@
 package com.team4.controller;
 
+import com.team4.model.CurrencyWallet;
+import com.team4.model.UserWallet;
 import com.team4.model.Wallet;
 import com.team4.service.user.IUserService;
 import com.team4.service.user.UserService;
@@ -93,9 +95,13 @@ public class WalletServlet extends HttpServlet {
     private void insertWallet(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
         String name = request.getParameter("name");
+        int a = Integer.parseInt(request.getParameter("currencies"));
+        CurrencyWallet currencyWallet = currencyService.getById(a);
+        int b = Integer.parseInt(request.getParameter("user"));
+        UserWallet userWallet = userWalletService.getById(b);
         double balance = Double.parseDouble(request.getParameter("balance"));
         String description = request.getParameter("description");
-        Wallet wallet = new Wallet(name, balance, description);
+        Wallet wallet = new Wallet(name, currencyWallet, userWallet, balance, description);
         walletService.insert(wallet);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("wallet/create.jsp");

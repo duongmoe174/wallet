@@ -2,7 +2,6 @@ package com.team4.service.wallet;
 
 import com.team4.config.SingletonConnection;
 import com.team4.model.Wallet;
-import org.w3c.dom.ls.LSOutput;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +12,8 @@ import java.util.List;
 
 public class WalletService implements IWalletService {
     private static final String SELECT_ALL_WALLET = "select id_wallet, name_wallet, current_amount, description from wallet";
-    private static final String INSERT_USERS_SQL = "insert into wallet(name_wallet,current_amount, description) values (?,?,?)";
+    private static final String INSERT_WALLET_SQL = "insert into wallet(name_wallet, id_currency, id_user," +
+            "current_amount, description) values (?,?,?,?,?)";
     private static final String SELECT_WALLET_BY_ID = "select name_wallet, current_amount, description from wallet " +
             "where id_wallet = ?;";
     private static final String UPDATE_USERS_SQL = "update wallet set name_wallet = ?, current_amount = ?, " +
@@ -48,13 +48,15 @@ public class WalletService implements IWalletService {
 
     @Override
     public void insert(Wallet wallet) {
-        System.out.println(INSERT_USERS_SQL);
+        System.out.println(INSERT_WALLET_SQL);
         //  try-with-resource statement will auto close the connection
         try (Connection connection = SingletonConnection.getConnect();
-             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
-            preparedStatement.setString(1, wallet.getName_wallet()); // Đối tượng thuộc interface gọi phương thức setString
-            preparedStatement.setDouble(2, wallet.getBalance());
-            preparedStatement.setString(3, wallet.getDescription());
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_WALLET_SQL)) {
+            preparedStatement.setString(1, wallet.getName_wallet());
+            preparedStatement.setInt(2, wallet.getCurrencyWallet().getId());
+            preparedStatement.setInt(3, wallet.getUserWallet().getId());
+            preparedStatement.setDouble(4, wallet.getBalance());
+            preparedStatement.setString(5, wallet.getDescription());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

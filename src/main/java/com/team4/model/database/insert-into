@@ -12,6 +12,9 @@ VALUES ('Techcombank', 1, 1, 1500000.0);
 insert into wallet(name_wallet, id_currency, id_user, current_amount)
 VALUES ('Bank of America', 2, 1, 3000.0);
 
+insert into wallet(id_currency, id_user)
+values (1, 1);
+
 -- Thêm dữ liệu vào table CURRENCY
 insert into currency(name_currency)
 values ('VND');
@@ -21,7 +24,8 @@ values ('USD');
 -- Thêm dữ liệu vào table CATEGORY
 # insert into category(name)
 # values ('food');
-insert into category(name_category, note) VALUES ('Coffee','25k per day, 1 month 750k');
+insert into category(name_category, note)
+VALUES ('Coffee', '25k per day, 1 month 750k');
 
 -- Thêm dữ liệu vào table TRANSACTION
 -- Income: Thu; Expense: Chi
