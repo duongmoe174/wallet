@@ -6,6 +6,9 @@ from wallet;
 select id_currency, name_currency
 from currency;
 
+select id_user, name_user
+from user;
+
 select currency.id_currency, name_currency, u.id_user, name_user
 from currency
          join wallet w on currency.id_currency = w.id_currency

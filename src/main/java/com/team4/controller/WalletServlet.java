@@ -1,10 +1,14 @@
 package com.team4.controller;
 
 import com.team4.model.Wallet;
+import com.team4.service.user.IUserService;
+import com.team4.service.user.UserService;
 import com.team4.service.wallet.IWalletService;
 import com.team4.service.wallet.WalletService;
 import com.team4.service.wallet.currency.CurrencyService;
 import com.team4.service.wallet.currency.ICurrencyService;
+import com.team4.service.wallet.users.IUserWalletService;
+import com.team4.service.wallet.users.UserWalletService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -17,6 +21,7 @@ import java.util.List;
 public class WalletServlet extends HttpServlet {
     IWalletService walletService = new WalletService();
     ICurrencyService currencyService = new CurrencyService();
+    IUserWalletService userWalletService = new UserWalletService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -67,6 +72,8 @@ public class WalletServlet extends HttpServlet {
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("currencies", currencyService.selectAll());
+        request.setAttribute("userWallet", userWalletService.selectAll());
         RequestDispatcher dispatcher = request.getRequestDispatcher("wallet/create.jsp");
         dispatcher.forward(request, response);
     }
@@ -84,7 +91,7 @@ public class WalletServlet extends HttpServlet {
         String description = request.getParameter("description");
         Wallet wallet = new Wallet(name, balance, description);
         walletService.insert(wallet);
-        request.setAttribute("currencies", currencyService.selectAll());
+
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("wallet/create.jsp");
         requestDispatcher.forward(request, response);
     }

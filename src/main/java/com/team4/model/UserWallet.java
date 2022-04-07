@@ -1,13 +1,13 @@
 package com.team4.model;
 
-public class CurrencyWallet {
+public class UserWallet {
     private int id;
     private String name;
 
-    public CurrencyWallet() {
+    public UserWallet() {
     }
 
-    public CurrencyWallet(int id, String name) {
+    public UserWallet(int id, String name) {
         this.id = id;
         this.name = name;
     }
