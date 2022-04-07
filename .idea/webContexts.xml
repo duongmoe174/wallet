@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/wallet/create.jsp" value="file://$PROJECT_DIR$/src/main/webapp/wallet" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/wallet/edit.jsp" value="file://$PROJECT_DIR$/src/main/webapp/wallet" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/wallet/list.jsp" value="file://$PROJECT_DIR$/src/main/webapp/wallet" />
       </map>
     </option>

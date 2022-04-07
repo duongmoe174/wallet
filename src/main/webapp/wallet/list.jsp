@@ -33,8 +33,8 @@
                 <td><c:out value="${wallet.balance}"/></td>
                 <td><c:out value="${wallet.description}"/></td>
                 <td>
-                    <a href="wallets?action=edit">Edit</a>
-                    <a href="wallets?action=delete">Delete</a>
+                    <a href="wallets?action=edit&id=${wallet.id_wallet}">Edit</a>
+                    <a href="wallets?action=delete&id=${wallet.id_wallet}">Delete</a>
                 </td>
             </tr>
         </c:forEach>

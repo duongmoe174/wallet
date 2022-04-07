@@ -78,14 +78,14 @@ public class UserService implements IUserService {
         try (CallableStatement callableStatement = connection.prepareCall(query)) {
             callableStatement.setInt(1, user.getId());
             callableStatement.setString(2, user.getName());
-            callableStatement.setString(3,  user.getPassword());
+            callableStatement.setString(3, user.getPassword());
             rowUpdate = callableStatement.executeUpdate() > 0;
         }
         return rowUpdate;
     }
 
     @Override
-    public boolean checkLogin (String username, String password) {
+    public boolean checkLogin(String username, String password) {
         boolean isValid = false;
         String query = "{CALL selectUserForLogin(?,?)}";
         try (CallableStatement callableStatement = connection.prepareCall(query)) {

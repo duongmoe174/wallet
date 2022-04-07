@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: minhtuan
@@ -43,10 +42,10 @@
             <tr>
                 <th>Id_User</th>
                 <td>
-                    <label for="currency"></label>
-                    <select name="currency" id="user">
-                        <c:forEach var="currency" items="${}">
-
+                    <label for="user"></label>
+                    <select name="user" id="user">
+                        <c:forEach var="user" items="${userWallet}">
+                            <option value="${user.getId()}">${user.getName()}</option>
                         </c:forEach>
                     </select>
                 </td>
