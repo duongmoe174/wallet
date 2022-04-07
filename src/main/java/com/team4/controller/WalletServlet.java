@@ -57,6 +57,9 @@ public class WalletServlet extends HttpServlet {
                 case "create":
                     insertWallet(request, response);
                     break;
+                case "edit":
+                    updateWallet(request, response);
+                    break;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -81,7 +84,10 @@ public class WalletServlet extends HttpServlet {
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-
+        Wallet wallet = walletService.getById(id);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("wallet/edit.jsp");
+        request.setAttribute("editingWallet", wallet);
+        requestDispatcher.forward(request, response);
     }
 
     private void insertWallet(HttpServletRequest request, HttpServletResponse response)
@@ -94,5 +100,18 @@ public class WalletServlet extends HttpServlet {
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("wallet/create.jsp");
         requestDispatcher.forward(request, response);
+    }
+
+    private void updateWallet(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        double balance = Double.parseDouble(request.getParameter("balance"));
+        String description = request.getParameter("description");
+
+        Wallet editingWallet = new Wallet(id, name, balance, description);
+        walletService.update(editingWallet);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("wallet/edit.jsp");
+        dispatcher.forward(request, response);
     }
 }
