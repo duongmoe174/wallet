@@ -7,6 +7,10 @@ public class Transaction {
     public Transaction() {
     }
 
+    public Transaction(String name) {
+        this.name = name;
+    }
+
     public Transaction(int id, String name) {
         this.id = id;
         this.name = name;
